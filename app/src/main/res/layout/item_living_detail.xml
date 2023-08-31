@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_200"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/tv_living_detail"
+        android:text="@string/living_detail"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_living_detail"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/tv_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/air_conditioner"
+            android:textColor="@color/gray_300"
+            app:layout_constraintEnd_toEndOf="@+id/iv_air_conditioner"
+            app:layout_constraintStart_toStartOf="@id/iv_air_conditioner"
+            app:layout_constraintTop_toBottomOf="@+id/iv_air_conditioner" />
+
+        <TextView
+            android:id="@+id/tv_air_condition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/long_time_turn_on"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/tv_1"
+            app:layout_constraintStart_toStartOf="@id/tv_1"
+            app:layout_constraintTop_toBottomOf="@id/tv_1" />
+
+        <TextView
+            android:id="@+id/tv_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/irritability"
+            android:textColor="@color/gray_300"
+            app:layout_constraintEnd_toEndOf="@+id/iv_irritability"
+            app:layout_constraintStart_toStartOf="@+id/iv_irritability"
+            app:layout_constraintTop_toBottomOf="@id/iv_irritability" />
+
+        <TextView
+            android:id="@+id/tv_irritability"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/seldom"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/tv_2"
+            app:layout_constraintStart_toStartOf="@id/tv_2"
+            app:layout_constraintTop_toBottomOf="@id/tv_2" />
+
+        <TextView
+            android:id="@+id/tv_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/flu"
+            android:textColor="@color/gray_300"
+            app:layout_constraintEnd_toEndOf="@+id/iv_flu"
+            app:layout_constraintStart_toStartOf="@+id/iv_flu"
+            app:layout_constraintTop_toBottomOf="@id/iv_flu" />
+
+        <TextView
+            android:id="@+id/tv_flu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/few"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/tv_3"
+            app:layout_constraintStart_toStartOf="@id/tv_3"
+            app:layout_constraintTop_toBottomOf="@id/tv_3" />
+
+        <TextView
+            android:id="@+id/tv_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fish"
+            android:textColor="@color/gray_300"
+            app:layout_constraintEnd_toEndOf="@+id/iv_fish"
+            app:layout_constraintStart_toStartOf="@+id/iv_fish"
+            app:layout_constraintTop_toBottomOf="@id/iv_fish" />
+
+        <TextView
+            android:id="@+id/tv_fish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/not_suggest"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/tv_4"
+            app:layout_constraintStart_toStartOf="@id/tv_4"
+            app:layout_constraintTop_toBottomOf="@id/tv_4" />
+
+        <ImageView
+            android:id="@+id/iv_air_conditioner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_air_conditioner"
+            app:layout_constraintEnd_toStartOf="@+id/iv_irritability"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_irritability"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_irritability"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_air_conditioner"
+            app:layout_constraintEnd_toStartOf="@+id/iv_flu"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/iv_air_conditioner"
+            app:layout_constraintTop_toTopOf="@+id/iv_air_conditioner"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/iv_flu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_flu"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_irritability"
+            app:layout_constraintEnd_toStartOf="@+id/iv_fish"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/iv_irritability"
+            app:layout_constraintTop_toTopOf="@+id/iv_irritability"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/iv_fish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_fish"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_flu"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/iv_flu"
+            app:layout_constraintTop_toTopOf="@+id/iv_flu"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/tv_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/wish_car"
+            android:textColor="@color/gray_300"
+            app:layout_constraintEnd_toEndOf="@+id/iv_clean_car"
+            app:layout_constraintStart_toStartOf="@id/iv_clean_car"
+            app:layout_constraintTop_toBottomOf="@+id/iv_clean_car" />
+
+        <TextView
+            android:id="@+id/tv_clean_car"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fine"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/tv_5"
+            app:layout_constraintStart_toStartOf="@id/tv_5"
+            app:layout_constraintTop_toBottomOf="@id/tv_5" />
+
+        <TextView
+            android:id="@+id/tv_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sport"
+            android:textColor="@color/gray_300"
+            app:layout_constraintEnd_toEndOf="@+id/iv_sport"
+            app:layout_constraintStart_toStartOf="@+id/iv_sport"
+            app:layout_constraintTop_toBottomOf="@id/iv_sport" />
+
+        <TextView
+            android:id="@+id/tv_sport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/not_better_suggest"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/tv_6"
+            app:layout_constraintStart_toStartOf="@id/tv_6"
+            app:layout_constraintTop_toBottomOf="@id/tv_6" />
+
+        <TextView
+            android:id="@+id/tv_7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/take_umbrella"
+            android:textColor="@color/gray_300"
+            app:layout_constraintEnd_toEndOf="@+id/iv_take_umbrella"
+            app:layout_constraintStart_toStartOf="@+id/iv_take_umbrella"
+            app:layout_constraintTop_toBottomOf="@id/iv_take_umbrella" />
+
+        <TextView
+            android:id="@+id/tv_take_umbrella"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/not_take_umbrella"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/tv_7"
+            app:layout_constraintStart_toStartOf="@id/tv_7"
+            app:layout_constraintTop_toBottomOf="@id/tv_7" />
+
+        <TextView
+            android:id="@+id/tv_8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/comfort_level"
+            android:textColor="@color/gray_300"
+            app:layout_constraintEnd_toEndOf="@+id/iv_comfort_level"
+            app:layout_constraintStart_toStartOf="@+id/iv_comfort_level"
+            app:layout_constraintTop_toBottomOf="@id/iv_comfort_level" />
+
+        <TextView
+            android:id="@+id/tv_comfort_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/very_uncomfortable"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/tv_8"
+            app:layout_constraintStart_toStartOf="@id/tv_8"
+            app:layout_constraintTop_toBottomOf="@id/tv_8" />
+
+        <ImageView
+            android:id="@+id/iv_clean_car"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_car"
+            app:layout_constraintEnd_toStartOf="@+id/iv_sport"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="@+id/iv_air_conditioner"
+            app:layout_constraintTop_toBottomOf="@id/tv_air_condition" />
+
+        <ImageView
+            android:id="@+id/iv_sport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_sport"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_clean_car"
+            app:layout_constraintEnd_toStartOf="@+id/iv_take_umbrella"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/iv_clean_car"
+            app:layout_constraintTop_toTopOf="@+id/iv_clean_car"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/iv_take_umbrella"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_umbrella"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_sport"
+            app:layout_constraintEnd_toStartOf="@+id/iv_comfort_level"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/iv_sport"
+            app:layout_constraintTop_toTopOf="@+id/iv_sport"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/iv_comfort_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_comfort_level"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_take_umbrella"
+            app:layout_constraintEnd_toEndOf="@+id/iv_fish"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/iv_take_umbrella"
+            app:layout_constraintTop_toTopOf="@+id/iv_take_umbrella"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

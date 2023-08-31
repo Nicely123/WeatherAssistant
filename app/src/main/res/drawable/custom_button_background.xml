@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 选择器 -->
+    <item android:drawable="@drawable/button_selector"/>
+    <!-- 形状 -->
+    <item android:drawable="@drawable/custom_button_shape"/>
+</layer-list>

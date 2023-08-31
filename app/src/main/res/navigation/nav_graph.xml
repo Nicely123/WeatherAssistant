@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/weatherBrowsingFragment">
+
+    <fragment
+        android:id="@+id/weatherBrowsingFragment"
+        android:name="com.example.weatherassistant.ui.weatherbrowsing.WeatherBrowsingFragment"
+        android:label="WeatherBrowsingFragment"
+        tools:layout="@layout/fragment_weather_browsing">
+        <action
+            android:id="@+id/action_weatherBrowsingFragment_to_citySelectFragment"
+            app:destination="@id/citySelectFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/jokeFragment"
+        android:name="com.example.weatherassistant.ui.joke.JokeFragment"
+        android:label="fragment_joke"
+        tools:layout="@layout/fragment_joke" />
+    <fragment
+        android:id="@+id/personalCenterFragment"
+        android:name="com.example.weatherassistant.ui.person.PersonalCenterFragment"
+        android:label="fragment_personal_center"
+        tools:layout="@layout/fragment_personal_center" />
+    <fragment
+        android:id="@+id/citySelectFragment"
+        android:name="com.example.weatherassistant.ui.weatherbrowsing.CitySelectFragment"
+        android:label="fragment_city_select"
+        tools:layout="@layout/fragment_city_select" >
+        <action
+            android:id="@+id/action_citySelectFragment_to_weatherBrowsingFragment"
+            app:destination="@id/weatherBrowsingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/livingIndexFragment"
+        android:name="com.example.weatherassistant.ui.weatherbrowsing.LivingIndexFragment"
+        android:label="fragment_living_index"
+        tools:layout="@layout/fragment_living_index" />
+    <fragment
+        android:id="@+id/oddDaysFragment"
+        android:name="com.example.weatherassistant.ui.weatherbrowsing.OddDaysFragment"
+        android:label="fragment_odd_days"
+        tools:layout="@layout/fragment_odd_days" />
+</navigation>

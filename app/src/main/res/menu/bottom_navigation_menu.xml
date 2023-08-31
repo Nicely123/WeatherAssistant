@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/weather_browsing_menu"
+        android:title="@string/weather_browsing"
+        android:icon="@drawable/ic_weather"/>
+    <item android:id="@+id/joke_menu"
+        android:title="@string/joke"
+        android:icon="@drawable/ic_joke"/>
+    <item android:id="@+id/person_menu"
+        android:title="@string/person"
+        android:icon="@drawable/ic_person"/>
+</menu>
