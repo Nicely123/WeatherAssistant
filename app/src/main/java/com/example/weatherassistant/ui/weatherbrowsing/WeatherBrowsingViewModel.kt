@@ -1,5 +1,6 @@
 package com.example.weatherassistant.ui.weatherbrowsing
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -17,40 +18,47 @@ import java.util.Locale
 class WeatherBrowsingViewModel: ViewModel() {
 
     private var _weatherInfo: MutableLiveData<Weather> = MutableLiveData()
-    val weatherInfo get() = _weatherInfo
+    val weatherInfo: LiveData<Weather> get() = _weatherInfo
 
     private var currentShowIndex = 0
 
+    // 城市显示
+    private var _currentCity: MutableLiveData<String> = MutableLiveData("北碚")
+    val currentCity: LiveData<String> get() = _currentCity
+
     private var _currentWeather:MutableLiveData<Future> = MutableLiveData()
-    val currentWeather get() = _currentWeather
+    val currentWeather: LiveData<Future> get() = _currentWeather
 
     private var _isFirstDay: MutableLiveData<Boolean> = MutableLiveData(true)
-    val isFirstDay get() = _isFirstDay
+    val isFirstDay: LiveData<Boolean> get() = _isFirstDay
 
     private var _isLastDay: MutableLiveData<Boolean> = MutableLiveData(false)
-    val isLastDay get() = _isLastDay
+    val isLastDay: LiveData<Boolean> get() = _isLastDay
 
     private var _isNight: MutableLiveData<Boolean> = MutableLiveData(false)
-    val isNight get() = _isNight
+    val isNight: LiveData<Boolean> get() = _isNight
 
     private var _lifeAdvice: MutableLiveData<Life> = MutableLiveData()
-    val lifeAdvice get() = _lifeAdvice
+    val lifeAdvice: LiveData<Life> get() = _lifeAdvice
 
     init {
         fetchData("北碚")
     }
-    private fun fetchData(city: String){
+    fun fetchData(city: String){
         fetchWeather(city)
         fetchLifeAdvice(city)
     }
 
+    fun setCurrentCity(city: String){
+         _currentCity.value = city
+    }
     private fun fetchWeather(city: String){
         viewModelScope.launch {
             val weatherResult = WeatherApi.retrofitService.getWeather(city)
             if (weatherResult.errorCode == 0){
                 _weatherInfo.value = weatherResult.weather
                 val future = weatherResult.weather.future[0]
-                currentWeather.value = formatWeather(future)
+                _currentWeather.value = formatWeather(future)
             }
         }
     }
@@ -62,6 +70,7 @@ class WeatherBrowsingViewModel: ViewModel() {
             }
         }
     }
+
     private fun formatWeather(future: Future): Future {
         val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         val outputFormat = SimpleDateFormat("MM月dd日", Locale.getDefault())
@@ -76,7 +85,6 @@ class WeatherBrowsingViewModel: ViewModel() {
             )
         )
     }
-
 
     /*
     是否点击了白天、夜晚按钮 false为白天，true为夜晚

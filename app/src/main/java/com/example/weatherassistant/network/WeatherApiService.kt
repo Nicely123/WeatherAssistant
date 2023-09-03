@@ -1,5 +1,6 @@
 package com.example.weatherassistant.network
 
+import com.example.weatherassistant.network.city.CityResult
 import com.example.weatherassistant.network.interceptor.ApiKeyInterceptor
 import com.example.weatherassistant.network.life.LifeResult
 import com.example.weatherassistant.network.weather.WeatherResult
@@ -18,6 +19,9 @@ interface WeatherApiService {
 
     @GET("life")
     suspend fun getLife(@Query("city") city: String): LifeResult
+
+    @GET("cityList")
+    suspend fun getCityList(): CityResult
 }
 
 private const val BASE_URL = "https://apis.juhe.cn/simpleWeather/"

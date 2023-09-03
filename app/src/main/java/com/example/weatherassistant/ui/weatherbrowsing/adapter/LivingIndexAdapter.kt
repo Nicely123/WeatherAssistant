@@ -71,7 +71,10 @@ class LivingIndexAdapter(
         fun bind(){
             binding.apply {
                 dateTextView.text = getCurrentDate()
-                areaTextView.text = "北碚区"
+                // 绑定城市显示
+                viewModel.currentCity.observe(lifecycleOwner){
+                    areaTextView.text = it
+                }
                 viewModel.lifeAdvice.observe(lifecycleOwner){ lifeAdvice ->
                     tvSummerDress.text = lifeAdvice.chuanyi.v
                     tvDressTips.text = lifeAdvice.chuanyi.des

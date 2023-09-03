@@ -93,6 +93,10 @@ class OddDaysAdapter(
                 areaTextView.setOnClickListener {
                     onClickCitySelect()
                 }
+                // 绑定城市显示
+                viewModel.currentCity.observe(lifecycleOwner){
+                    areaTextView.text = it
+                }
                 // 天气显示
                 viewModel.isNight.observe(lifecycleOwner){ isNight ->
                     viewModel.currentWeather.value?.let { future ->

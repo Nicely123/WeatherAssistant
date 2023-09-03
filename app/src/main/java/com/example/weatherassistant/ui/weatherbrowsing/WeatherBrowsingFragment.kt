@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.widget.ViewPager2
 import com.example.weatherassistant.databinding.FragmentWeatherBrowsingBinding
 import com.google.android.material.tabs.TabLayoutMediator
@@ -13,6 +15,9 @@ import com.google.android.material.tabs.TabLayoutMediator
 class WeatherBrowsingFragment: Fragment(){
     private var _binding: FragmentWeatherBrowsingBinding? = null
     private val binding get() = _binding!!
+
+    private val navigationArgs:WeatherBrowsingFragmentArgs by navArgs()
+    private val viewModel: WeatherBrowsingViewModel by activityViewModels()
 
     private lateinit var weatherBrowsingAdapter: WeatherBrowsingAdapter
     private lateinit var viewPager: ViewPager2
@@ -36,6 +41,10 @@ class WeatherBrowsingFragment: Fragment(){
                 1 -> {tab.text = "生活指数"}
             }
         }.attach()
+        if (navigationArgs.city != "default"){
+            viewModel.fetchData(navigationArgs.city)
+            viewModel.setCurrentCity(navigationArgs.city)
+        }
         bind()
     }
 

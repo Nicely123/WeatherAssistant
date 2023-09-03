@@ -5,6 +5,7 @@ import android.app.Application
 import android.content.Context
 import android.hardware.input.InputManager
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -15,15 +16,26 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.core.content.ContextCompat
 import androidx.core.content.getSystemService
+import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.weatherassistant.BaseApplication
 import com.example.weatherassistant.R
 import com.example.weatherassistant.databinding.FragmentCitySelectBinding
+import com.example.weatherassistant.ui.weatherbrowsing.adapter.CitySelectAdapter
 
-
+private const val TAG = "CitySelectFragment"
 class CitySelectFragment : Fragment() {
 
     private var _binding: FragmentCitySelectBinding ?= null
     private val binding get() = _binding!!
+
+    private val viewModel: CitySelectViewModel by activityViewModels{
+        CitySelectViewModelProvider(
+            (activity?.application as BaseApplication).appDatabase.cityDao()
+        )
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,6 +52,7 @@ class CitySelectFragment : Fragment() {
 
     @SuppressLint("ClickableViewAccessibility")
     private fun bind(){
+
         val editText = binding.etSelectCity
         // 设置图标与
         // 设置叉叉图标点击事件
@@ -60,16 +73,32 @@ class CitySelectFragment : Fragment() {
             }
             return@setOnTouchListener false
         }
-        // 设置回车点击事件
-        binding.etSelectCity.setOnEditorActionListener{ _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_NULL){
-
-                return@setOnEditorActionListener true
+        // 监听输入框内容变化
+        editText.addTextChangedListener(
+            onTextChanged = { text, _, _, _ ->
+                viewModel.queryCity(text.toString())
             }
-            return@setOnEditorActionListener false
-        }
+        )
+
         binding.backButton.setOnClickListener {
             findNavController().navigateUp()
+        }
+
+        // 显示搜索结果
+        val adapter = CitySelectAdapter{ displayedCity ->
+            val action = CitySelectFragmentDirections.actionCitySelectFragmentToWeatherBrowsingFragment(
+                city = displayedCity.district
+            )
+            findNavController().navigate(action)
+        }
+
+        binding.citySelectRecycleView.apply {
+            this.adapter = adapter
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        }
+        // 列表信息显示
+        viewModel.cityList.observe(viewLifecycleOwner){
+            adapter.submitList(it)
         }
     }
 

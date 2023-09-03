@@ -60,12 +60,20 @@
         android:drawablePadding="8dp"
         android:drawableStart="@drawable/ic_search"
         android:drawableEnd="@drawable/ic_close"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="32dp"
         android:background="@drawable/shape_city_select"
         android:hint="@string/select_city"
         android:padding="8dp"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/city_select_recycle_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:clipToPadding="true"
+        tools:listitem="@layout/item_city_display"/>
 
 </LinearLayout>
