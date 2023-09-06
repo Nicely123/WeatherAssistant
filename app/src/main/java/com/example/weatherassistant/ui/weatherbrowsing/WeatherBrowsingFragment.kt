@@ -16,6 +16,7 @@ class WeatherBrowsingFragment: Fragment(){
     private var _binding: FragmentWeatherBrowsingBinding? = null
     private val binding get() = _binding!!
 
+    // 从城市选择Activity传过来的值
     private val navigationArgs:WeatherBrowsingFragmentArgs by navArgs()
     private val viewModel: WeatherBrowsingViewModel by activityViewModels()
 

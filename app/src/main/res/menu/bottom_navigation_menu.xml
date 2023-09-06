@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/weather_browsing_menu"
         android:title="@string/weather_browsing"
-        android:icon="@drawable/ic_weather"/>
+        android:icon="@drawable/ic_weather" />
     <item android:id="@+id/joke_menu"
         android:title="@string/joke"
         android:icon="@drawable/ic_joke"/>

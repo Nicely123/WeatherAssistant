@@ -3,9 +3,7 @@ package com.example.weatherassistant.ui.weatherbrowsing.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.weatherassistant.databinding.ItemLivingDetailBinding
 import com.example.weatherassistant.databinding.ItemLivingDressBinding
 import com.example.weatherassistant.ui.weatherbrowsing.WeatherBrowsingViewModel
@@ -13,7 +11,8 @@ import com.example.weatherassistant.util.getCurrentDate
 
 class LivingIndexAdapter(
     val viewModel: WeatherBrowsingViewModel,
-    val lifecycleOwner: LifecycleOwner
+    val lifecycleOwner: LifecycleOwner,
+    val onClickCitySelect: () -> Unit
 ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     /*
@@ -78,6 +77,10 @@ class LivingIndexAdapter(
                 viewModel.lifeAdvice.observe(lifecycleOwner){ lifeAdvice ->
                     tvSummerDress.text = lifeAdvice.chuanyi.v
                     tvDressTips.text = lifeAdvice.chuanyi.des
+                }
+                // 城市选择点击回调
+                areaTextView.setOnClickListener{
+                    onClickCitySelect()
                 }
             }
         }

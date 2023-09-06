@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import com.example.weatherassistant.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationBarView
 
