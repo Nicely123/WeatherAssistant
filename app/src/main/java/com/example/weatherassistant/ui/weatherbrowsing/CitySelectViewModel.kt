@@ -1,18 +1,14 @@
 package com.example.weatherassistant.ui.weatherbrowsing
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.weatherassistant.database.CityDao
-import com.example.weatherassistant.database.data.asDomainModel
 import com.example.weatherassistant.domain.DisplayedCity
 import com.example.weatherassistant.repository.CityRepository
-import java.lang.IllegalArgumentException
 
 class CitySelectViewModel(
-    private val cityDao: CityDao
+    cityDao: CityDao
 ):ViewModel() {
 
     private val cityRepository: CityRepository = CityRepository(cityDao)

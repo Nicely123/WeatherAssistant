@@ -1,10 +1,8 @@
 package com.example.weatherassistant.repository
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.example.weatherassistant.database.CityDao
-import com.example.weatherassistant.database.data.DatabaseCity
 import com.example.weatherassistant.database.data.asDomainModel
 import com.example.weatherassistant.domain.DisplayedCity
 import com.example.weatherassistant.network.WeatherApi

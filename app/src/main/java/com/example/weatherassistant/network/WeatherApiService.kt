@@ -23,26 +23,25 @@ interface WeatherApiService {
     @GET("cityList")
     suspend fun getCityList(): CityResult
 }
-
 private const val BASE_URL = "https://apis.juhe.cn/simpleWeather/"
-private const val API_KEY = "0380213d2fbcb033f4822999c3322876"
 
+val moshi: Moshi = Moshi.Builder()
+    .add(KotlinJsonAdapterFactory())
+    .build()
+private const val API_KEY = "0380213d2fbcb033f4822999c3322876"
 private val httpClient = OkHttpClient.Builder()
     .addInterceptor(ApiKeyInterceptor(API_KEY))
     .build()
-
-private val moshi = Moshi.Builder()
-    .add(KotlinJsonAdapterFactory())
-    .build()
-
-private val retrofit = Retrofit.Builder()
+val retrofit: Retrofit = Retrofit.Builder()
+    .addConverterFactory(MoshiConverterFactory.create(moshi))
     .baseUrl(BASE_URL)
     .client(httpClient)
-    .addConverterFactory(MoshiConverterFactory.create(moshi))
     .build()
 
 object WeatherApi{
+
     val retrofitService: WeatherApiService by lazy {
         retrofit.create(WeatherApiService::class.java)
     }
 }
+

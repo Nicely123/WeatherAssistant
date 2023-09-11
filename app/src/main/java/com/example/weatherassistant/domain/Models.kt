@@ -6,3 +6,9 @@ data class DisplayedCity(
     val city: String,
     val district: String
 )
+
+data class DisplayJoke(
+    val content: String,
+    val hashId: String,
+    val unixtime: String    // 时间戳
+)

@@ -1,6 +1,5 @@
 package com.example.weatherassistant.ui.weatherbrowsing.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.LifecycleOwner
@@ -13,7 +12,7 @@ import com.example.weatherassistant.network.weather.Weather
 import com.example.weatherassistant.ui.weatherbrowsing.WeatherBrowsingViewModel
 import com.example.weatherassistant.util.weather
 
-const val TAG = "OddDaysAdapter"
+private const val TAG = "OddDaysAdapter"
 class OddDaysAdapter(
     private val viewModel: WeatherBrowsingViewModel,
     private val lifecycleOwner: LifecycleOwner,

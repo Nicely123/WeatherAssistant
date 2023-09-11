@@ -1,5 +1,6 @@
 package com.example.weatherassistant.database.data
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.weatherassistant.domain.DisplayedCity
@@ -10,9 +11,13 @@ import com.example.weatherassistant.domain.DisplayedCity
 @Entity(tableName = "database_city")
 data class DatabaseCity(
     @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
     val id: Long,
+    @ColumnInfo(name = "province")
     val province: String,
+    @ColumnInfo(name = "city")
     val city: String,
+    @ColumnInfo(name = "district")
     val district: String
 )
 
