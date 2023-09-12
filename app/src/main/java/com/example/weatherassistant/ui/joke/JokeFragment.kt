@@ -1,15 +1,15 @@
 package com.example.weatherassistant.ui.joke
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.ItemTouchHelper
 import com.example.weatherassistant.BaseApplication
 import com.example.weatherassistant.databinding.FragmentJokeBinding
+import com.example.weatherassistant.domain.DisplayJoke
 
 private const val TAG = "JokeFragment"
 class JokeFragment : Fragment() {
@@ -32,15 +32,26 @@ class JokeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val jokeAdapter = JokeAdapter()
-        jokeViewModel.displayJokes.observe(viewLifecycleOwner){
-            Log.v(TAG, it.toString())
-            jokeAdapter.submitData(it)
-        }
-        binding.recycleView.apply {
+        val rv = binding.recycleView
+        rv.apply {
             adapter = jokeAdapter
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            layoutManager = SlideCardLayoutManager()
         }
+        // 初始化数据
+        CardConfig.initConfig(requireContext())
+        val mDataJokes = mutableListOf<DisplayJoke>()
+        jokeViewModel.displayJokes.observe(viewLifecycleOwner){
+            it?.let { data ->
+                jokeAdapter.submitData(data)
+                mDataJokes.clear()
+                mDataJokes.addAll(data)
+            }
+        }
+        // 创建ItemTouchHelper，必须需要使用ItemTouchHelper.Callback
+        val itemTouchHelper = ItemTouchHelper(SlideCardCallback(
+            jokeAdapter,
+            mDataJokes
+        ))
+        itemTouchHelper.attachToRecyclerView(rv)
     }
-
-
 }
