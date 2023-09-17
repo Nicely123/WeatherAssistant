@@ -42,16 +42,16 @@ class JokeFragment : Fragment() {
         val mDataJokes = mutableListOf<DisplayJoke>()
         jokeViewModel.displayJokes.observe(viewLifecycleOwner){
             it?.let { data ->
-                jokeAdapter.submitData(data)
-                mDataJokes.clear()
                 mDataJokes.addAll(data)
+                jokeAdapter.submitData(data)
+                // 创建ItemTouchHelper，必须需要使用ItemTouchHelper.Callback
+                val itemTouchHelper = ItemTouchHelper(SlideCardCallback(
+                    jokeAdapter,
+                    mDataJokes
+                ))
+                itemTouchHelper.attachToRecyclerView(rv)
+
             }
         }
-        // 创建ItemTouchHelper，必须需要使用ItemTouchHelper.Callback
-        val itemTouchHelper = ItemTouchHelper(SlideCardCallback(
-            jokeAdapter,
-            mDataJokes
-        ))
-        itemTouchHelper.attachToRecyclerView(rv)
     }
 }

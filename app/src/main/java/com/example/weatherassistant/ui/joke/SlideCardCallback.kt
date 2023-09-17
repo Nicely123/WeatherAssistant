@@ -21,11 +21,12 @@ class SlideCardCallback(
         return false
     }
 
+    // 划出屏幕
     @SuppressLint("NotifyDataSetChanged")
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
         val remove: DisplayJoke = mData.removeAt(viewHolder.layoutPosition)
         mData.add(0, remove)
-        adapter.notifyDataSetChanged()
+        adapter.submitData(mData)
     }
 
     override fun onChildDraw(

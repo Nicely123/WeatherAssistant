@@ -3,11 +3,9 @@ package com.example.weatherassistant.ui.joke
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
 import com.example.weatherassistant.database.JokeDao
 import com.example.weatherassistant.domain.DisplayJoke
 import com.example.weatherassistant.repository.JokeRepository
-import kotlinx.coroutines.launch
 
 class JokeViewModel(
     jokeDao: JokeDao
@@ -16,11 +14,11 @@ class JokeViewModel(
 
     var displayJokes: LiveData<List<DisplayJoke>?>  = jokeRepository.jokes
 
-    init {
-        viewModelScope.launch {
-            jokeRepository.storeJokes()
-        }
-    }
+//    init {
+//        viewModelScope.launch {
+//            jokeRepository.storeJokes()
+//        }
+//    }
 
     fun setJokes(){
         displayJokes = jokeRepository.fetchJokes()
